@@ -10,19 +10,33 @@
 include: package:flutter_lints/flutter.yaml
 
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    # Basic code quality rules
+    avoid_print: true # Avoid using print statements for logging
+    prefer_const_constructors: true # Prefer const constructors where possible
+    prefer_final_locals: true # Prefer declaring local variables as final if they are not reassigned
+
+    # Code style rules
+    prefer_single_quotes: true # Prefer single quotes for string literals
+    always_use_package_imports: true # Prefer package imports (package:my_package/my_file.dart)
+
+    # Code organization rules
+    sort_pub_dependencies: true # Ensure pub dependencies are sorted alphabetically
+    file_names: true # Ensure file names are lowercase_with_underscores
+
+    # Flutter specific rules
+    avoid_unnecessary_containers: true # Avoid unnecessary container widgets
+    prefer_const_constructors_in_immutables: true # Prefer const constructors in @immutable classes
+    sized_box_for_whitespace: true # Use SizedBox for whitespace in a layout
+
+    # Error handling and null safety
+    avoid_returning_null_for_void: true # Avoid returning null from void methods
+    null_closures: true # Avoid null in closure bodies
+
+    # Performance optimizations
+    avoid_redundant_argument_values: true # Avoid specifying argument values that match their defaults
+    curly_braces_in_flow_control_structures: true # Always put curly braces around blocks in control flow structures
+    require_trailing_commas: false # Require trailing commas in argument lists and literals
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

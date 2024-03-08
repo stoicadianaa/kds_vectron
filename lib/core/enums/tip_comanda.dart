@@ -1,0 +1,1 @@
+enum TipComanda { dinein, pickup }

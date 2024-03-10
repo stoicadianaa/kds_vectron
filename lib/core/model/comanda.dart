@@ -6,6 +6,7 @@ class Comanda {
   String numeOspatar;
   TipComanda tipComanda;
   String nrMasa;
+  String id;
   double valoareComanda;
   String observatiiComanda;
   List<ProdusComanda> produseComanda;
@@ -13,16 +14,17 @@ class Comanda {
   DateTime dataComanda;
 
   Comanda(
-      this.idOspatar,
-      this.numeOspatar,
-      this.tipComanda,
-      this.nrMasa,
-      this.valoareComanda,
-      this.observatiiComanda,
-      this.produseComanda,
-      this.nrComanda,
-      this.dataComanda);
-
+    this.idOspatar,
+    this.numeOspatar,
+    this.tipComanda,
+    this.nrMasa,
+    this.id,
+    this.valoareComanda,
+    this.observatiiComanda,
+    this.produseComanda,
+    this.nrComanda,
+    this.dataComanda,
+  );
 
   @override
   String toString() {
@@ -38,4 +40,54 @@ class Comanda {
 
   @override
   int get hashCode => nrComanda.hashCode;
+
+  factory Comanda.fromJson(Map<String, dynamic> json) {
+    if (json['id_ospatar'] == null) {
+      throw Exception('id_ospatar is null');
+    }
+    if (json['nume_ospatar'] == null) {
+      throw Exception('nume_ospatar is null');
+    }
+    if (json['tip_comanda'] == null) {
+      throw Exception('tip_comanda is null');
+    }
+    if (json['table_no'] == null) {
+      throw Exception('table_no is null');
+    }
+    if (json['id_comanda'] == null) {
+      throw Exception('id_comanda is null');
+    }
+    if (json['valoare_comanda'] == null &&
+        double.tryParse(json['valoare_comanda']) == null) {
+      throw Exception('valoare_comanda is null');
+    }
+    if (json['observatii_comanda'] == null) {
+      throw Exception('observatii_comanda is null');
+    }
+    if (json['produse_comanda'] == null) {
+      throw Exception('produse_comanda is null');
+    }
+    if (json['numar_comanda'] == null) {
+      throw Exception('numar_comanda is null');
+    }
+    if (json['data_comanda'] == null) {
+      throw Exception('data_comanda is null');
+    }
+
+    return Comanda(
+      json['id_ospatar'],
+      json['nume_ospatar'],
+      TipComanda.values.firstWhere((e) => e.value == json['tip_comanda'],
+          orElse: () => TipComanda.other),
+      json['table_no'],
+      json['id_comanda'],
+      json['valoare_comanda'],
+      json['observatii_comanda'],
+      (json['produse_comanda'] as List)
+          .map((e) => ProdusComanda.fromJson(e))
+          .toList(),
+      json['numar_comanda'].toString(),
+      DateTime.parse(json['data_comanda']),
+    );
+  }
 }

@@ -145,7 +145,7 @@ class CardComanda extends StatelessWidget {
               if (orderStarted) {
                 return TextButton(
                   onPressed: () async {
-                    ComenziService.endComanda(comanda.id);
+                    await ComenziService.endComanda(comanda.id);
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),

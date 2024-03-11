@@ -20,6 +20,33 @@ class CardComanda extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Flex buildInfoComanda = Flex(
+      direction: Axis.horizontal,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(comanda.tipComanda.icon, size: 16),
+                  const SizedBox(width: 8),
+                  Text(
+                    comanda.tipComanda.name,
+                    softWrap: true,
+                  ),
+                  if (comanda.tipComanda == TipComanda.dinein)
+                    Text(' - Masa ${comanda.nrMasa}', softWrap: true),
+                ],
+              ),
+              Text('Ospatar: ${comanda.numeOspatar}', softWrap: true),
+            ],
+          ),
+        ),
+        Text(comanda.dataComanda.formattedTime, softWrap: true),
+      ],
+    );
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(),
@@ -30,7 +57,7 @@ class CardComanda extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildInfoComanda(),
+          buildInfoComanda,
           const Divider(color: Colors.black),
           Expanded(
             child: Scrollbar(
@@ -153,35 +180,6 @@ class CardComanda extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Flex buildInfoComanda() {
-    return Flex(
-      direction: Axis.horizontal,
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(comanda.tipComanda.icon, size: 16),
-                  const SizedBox(width: 8),
-                  Text(
-                    comanda.tipComanda.name,
-                    softWrap: true,
-                  ),
-                  if (comanda.tipComanda == TipComanda.dinein)
-                    Text(' - Masa ${comanda.nrMasa}', softWrap: true),
-                ],
-              ),
-              Text('Ospatar: ${comanda.numeOspatar}', softWrap: true),
-            ],
-          ),
-        ),
-        Text(comanda.dataComanda.formattedTime, softWrap: true),
-      ],
     );
   }
 }

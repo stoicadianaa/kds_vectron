@@ -11,6 +11,7 @@ class ComenziScreen extends StatelessWidget {
   ComenziScreen({super.key});
 
   final ComenziService comenziService = ComenziService();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +37,19 @@ class ComenziScreen extends StatelessWidget {
                 (snapshot.data ?? [] as List<Comanda>);
             comenzi.removeWhere((element) => element.oraEnd != null);
 
-            return GridView.extent(
-              maxCrossAxisExtent: 400 + 16,
-              padding: const EdgeInsets.all(16),
-              children: [
-                for (var data in comenzi) CardComanda(comanda: data),
-              ],
+            return Scrollbar(
+              interactive: true,
+              thumbVisibility: true,
+              thickness: 10.0,
+              controller: _scrollController,
+              child: GridView.extent(
+                controller: _scrollController,
+                maxCrossAxisExtent: 400 + 16,
+                padding: const EdgeInsets.all(16),
+                children: [
+                  for (var data in comenzi) CardComanda(comanda: data),
+                ],
+              ),
             );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');

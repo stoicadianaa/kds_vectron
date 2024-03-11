@@ -19,7 +19,7 @@ class Counter extends StatelessWidget {
       valueListenable: duration,
       builder: (context, Duration value, child) {
         return Text(
-          '${(value.inSeconds / 60).floor()}:${(value.inSeconds % 60).toString().padLeft(2, '0')}',
+          '${(value.inSeconds / 3600).floor().toString().padLeft(2, '0')}:${(value.inSeconds / 60 % 60).floor().toString().padLeft(2, '0')}:${(value.inSeconds % 60).toString().padLeft(2, '0')}',
           style: style,
         );
       },

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_single_quotes
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -13,7 +11,7 @@ class ComenziService {
 
     final String source = const Utf8Decoder().convert(response.bodyBytes);
 
-    final json = jsonDecode(source)["comenzi"];
+    final json = jsonDecode(source)['comenzi'];
 
     final List<Comanda> comenzi = [];
     for (var comanda in json) {

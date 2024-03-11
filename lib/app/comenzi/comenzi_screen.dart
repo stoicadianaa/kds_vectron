@@ -20,6 +20,13 @@ class ComenziScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         title: ExactTime(),
+        centerTitle: true,
+        actions: [
+          //todo format date
+          Text(
+              '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}'),
+          const SizedBox(width: 16),
+        ],
       ),
       body: StreamBuilder(
         stream: WebSocketService.comandaUpdateController.stream,
@@ -30,11 +37,12 @@ class ComenziScreen extends StatelessWidget {
             comenzi.removeWhere((element) => element.oraEnd != null);
 
             return GridView.extent(
-                maxCrossAxisExtent: 400 + 16,
-                padding: const EdgeInsets.all(16),
-                children: [
-                  for (var data in comenzi) CardComanda(comanda: data)
-                ]);
+              maxCrossAxisExtent: 400 + 16,
+              padding: const EdgeInsets.all(16),
+              children: [
+                for (var data in comenzi) CardComanda(comanda: data),
+              ],
+            );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
@@ -67,7 +75,7 @@ class CardComanda extends StatelessWidget {
       ),
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
-      width: 300,
+      width: 400,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -108,6 +116,7 @@ class CardComanda extends StatelessWidget {
                     Column(
                       children: [
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               produs.cantitate.toString(),
@@ -123,6 +132,18 @@ class CardComanda extends StatelessWidget {
                             ),
                           ],
                         ),
+                        if (produs.observatii.isNotEmpty)
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.info_outline,
+                                size: 16,
+                                color: Colors.grey,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(produs.observatii),
+                            ],
+                          ),
                         const Divider(color: Colors.black12),
                       ],
                     ),
@@ -148,7 +169,8 @@ class CardComanda extends StatelessWidget {
                     await ComenziService.endComanda(comanda.id);
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepOrange),
                     fixedSize: MaterialStateProperty.all(
                         const Size(double.maxFinite, 50)),
                     shape: MaterialStateProperty.all(
@@ -158,6 +180,7 @@ class CardComanda extends StatelessWidget {
                     ),
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'ORDER STARTED',

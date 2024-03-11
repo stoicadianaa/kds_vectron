@@ -1,24 +1,15 @@
-// ignore_for_file: unused_import, always_use_package_imports, use_key_in_widget_constructors
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:kds_vectron/app/comenzi/comenzi_screen.dart';
-import 'package:kds_vectron/core/service/comenzi.service.dart';
-import 'package:stomp_dart_client/stomp.dart';
-import 'package:stomp_dart_client/stomp_config.dart';
-import 'package:stomp_dart_client/stomp_frame.dart';
-import 'package:web_socket_channel/html.dart';
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
-import 'core/service/web_socket.service.dart';
+import 'package:kds_vectron/core/service/web_socket.service.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   MyAppState createState() => MyAppState();
 }
@@ -34,6 +25,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ComenziScreen(),
     );
   }

@@ -29,6 +29,6 @@ extension DateTimeExtension on DateTime {
         break;
     }
 
-    return '$day, ${this.day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/${year}';
+    return '$day, ${this.day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year';
   }
 }

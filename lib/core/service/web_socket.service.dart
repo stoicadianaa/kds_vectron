@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:kds_vectron/core/service/comenzi.service.dart';
 import 'package:stomp_dart_client/stomp.dart';
@@ -12,7 +13,7 @@ class WebSocketService {
   static Stream<List<Comanda>> get comandaUpdates => comandaUpdateController.stream;
 
   static void connectToWebSocket() {
-    print('Connecting to WebSocket...');
+    log('Connecting to WebSocket...');
     late StompClient stompClient;
     stompClient = StompClient(
       config: StompConfig(
@@ -29,12 +30,12 @@ class WebSocketService {
               },
           );
         },
-        onWebSocketError: (dynamic error) => print('WebSocket error: $error'),
-        onStompError: (StompFrame frame) => print('STOMP error: ${frame.body}'),
+        onWebSocketError: (dynamic error) => log('WebSocket error: $error'),
+        onStompError: (StompFrame frame) => log('STOMP error: ${frame.body}'),
       ),
     );
 
-    print('Activating StompClient...');
+    log('Activating StompClient...');
 
     stompClient.activate();
   }

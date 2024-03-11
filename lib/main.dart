@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:kds_vectron/app/comenzi/comenzi_screen.dart';
 
@@ -19,7 +21,7 @@ class MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     WebSocketService.connectToWebSocket();
-    print('Connected, listening for messages...');
+    log('Connected, listening for messages...');
   }
 
   @override

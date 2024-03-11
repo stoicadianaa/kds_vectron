@@ -28,8 +28,6 @@ class ProdusComanda {
   int get hashCode => id.hashCode ^ idComanda.hashCode;
 
   factory ProdusComanda.fromJson(Map<String, dynamic> json) {
-    //todo add checks for null
-
     if (json['id_produs'] == null) {
       throw Exception('id_produs is null');
     }

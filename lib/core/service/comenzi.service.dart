@@ -24,11 +24,11 @@ class ComenziService {
 
   static Future<void> startComanda(String id) async {
     await http.put(Uri.parse(
-        'http://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateStartTime/$id'));
+        'https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateStartTime/$id'));
   }
 
   static Future<void> endComanda(String id) async {
     await http.put(Uri.parse(
-        'http://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateEndTime/$id'));
+        'https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateEndTime/$id'));
   }
 }

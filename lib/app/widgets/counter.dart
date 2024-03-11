@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class Counter extends StatelessWidget {
   Counter({super.key, this.style, required DateTime startTime}) {
     duration = ValueNotifier(DateTime.now().difference(startTime));
+    print('Counter constructor called with $startTime');
     Timer.periodic(const Duration(seconds: 1), (timer) {
       duration.value = DateTime.now().difference(startTime);
     });

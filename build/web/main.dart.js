@@ -20555,13 +20555,13 @@ _.w=g},
 Qj(a){var s=0,r=A.V(t.H)
 var $async$Qj=A.W(function(b,c){if(b===1)return A.S(c,r)
 while(true)switch(s){case 0:s=2
-return A.Z(A.ahY(A.fX("http://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateStartTime/"+a)),$async$Qj)
+return A.Z(A.ahY(A.fX("https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateStartTime/"+a)),$async$Qj)
 case 2:return A.T(null,r)}})
 return A.U($async$Qj,r)},
 Qi(a){var s=0,r=A.V(t.H)
 var $async$Qi=A.W(function(b,c){if(b===1)return A.S(c,r)
 while(true)switch(s){case 0:s=2
-return A.Z(A.ahY(A.fX("http://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateEndTime/"+a)),$async$Qi)
+return A.Z(A.ahY(A.fX("https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateEndTime/"+a)),$async$Qi)
 case 2:return A.T(null,r)}})
 return A.U($async$Qi,r)},
 qH:function qH(){},

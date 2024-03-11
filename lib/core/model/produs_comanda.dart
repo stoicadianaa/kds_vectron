@@ -6,7 +6,7 @@ class ProdusComanda {
   String? observatii;
   num cantitate;
   num pretUnitar;
-  int idComanda;
+  String idComanda;
 
   ProdusComanda(this.id, this.denumire, this.idCategorieProdus, this.denumireCategorie, this.observatii,
       this.cantitate, this.pretUnitar, this.idComanda);

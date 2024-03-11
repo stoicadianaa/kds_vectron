@@ -49,12 +49,14 @@ class Comanda {
     if (json['id_comanda'] == null) {
       throw Exception('id_comanda is null');
     }
-
     if (json['numar_comanda'] == null) {
       throw Exception('numar_comanda is null');
     }
     if (json['data_comanda'] == null) {
       throw Exception('data_comanda is null');
+    }
+    if (json['produse_comanda'] == null) {
+      throw Exception('produse_comanda is null');
     }
 
     return Comanda(

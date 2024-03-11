@@ -1,0 +1,28 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+class Counter extends StatelessWidget {
+  Counter({super.key, this.style, required DateTime startTime}) {
+    duration = ValueNotifier(DateTime.now().difference(startTime));
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      duration.value = DateTime.now().difference(startTime);
+    });
+  }
+
+  late final ValueNotifier<Duration> duration;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: duration,
+      builder: (context, Duration value, child) {
+        return Text(
+          '${(value.inSeconds / 60).floor()}:${(value.inSeconds % 60).toString().padLeft(2, '0')}',
+          style: style,
+        );
+      },
+    );
+  }
+}

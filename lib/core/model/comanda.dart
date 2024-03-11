@@ -12,6 +12,8 @@ class Comanda {
   List<ProdusComanda> produseComanda;
   String nrComanda;
   DateTime dataComanda;
+  DateTime? oraStart;
+  DateTime? oraEnd;
 
   Comanda(
     this.idOspatar,
@@ -24,6 +26,8 @@ class Comanda {
     this.produseComanda,
     this.nrComanda,
     this.dataComanda,
+    this.oraStart,
+    this.oraEnd,
   );
 
   @override
@@ -88,6 +92,8 @@ class Comanda {
           .toList(),
       json['numar_comanda'].toString(),
       DateTime.parse(json['data_comanda']),
+      DateTime.tryParse(json['start_time'] ?? ''),
+      DateTime.tryParse(json['end_time'] ?? ''),
     );
   }
 }

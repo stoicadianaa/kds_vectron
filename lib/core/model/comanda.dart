@@ -2,13 +2,13 @@ import 'package:kds_vectron/core/enums/tip_comanda.dart';
 import 'package:kds_vectron/core/model/produs_comanda.dart';
 
 class Comanda {
-  String idOspatar;
-  String numeOspatar;
+  String? idOspatar;
+  String? numeOspatar;
   TipComanda tipComanda;
-  String nrMasa;
+  String? nrMasa;
   String id;
-  double valoareComanda;
-  String observatiiComanda;
+  double? valoareComanda;
+  String? observatiiComanda;
   List<ProdusComanda> produseComanda;
   String nrComanda;
   DateTime dataComanda;
@@ -46,31 +46,10 @@ class Comanda {
   int get hashCode => nrComanda.hashCode;
 
   factory Comanda.fromJson(Map<String, dynamic> json) {
-    if (json['id_ospatar'] == null) {
-      throw Exception('id_ospatar is null');
-    }
-    if (json['nume_ospatar'] == null) {
-      throw Exception('nume_ospatar is null');
-    }
-    if (json['tip_comanda'] == null) {
-      throw Exception('tip_comanda is null');
-    }
-    if (json['table_no'] == null) {
-      throw Exception('table_no is null');
-    }
     if (json['id_comanda'] == null) {
       throw Exception('id_comanda is null');
     }
-    if (json['valoare_comanda'] == null &&
-        double.tryParse(json['valoare_comanda']) == null) {
-      throw Exception('valoare_comanda is null');
-    }
-    if (json['observatii_comanda'] == null) {
-      throw Exception('observatii_comanda is null');
-    }
-    if (json['produse_comanda'] == null) {
-      throw Exception('produse_comanda is null');
-    }
+
     if (json['numar_comanda'] == null) {
       throw Exception('numar_comanda is null');
     }

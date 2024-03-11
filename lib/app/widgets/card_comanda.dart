@@ -89,7 +89,8 @@ class CardComanda extends StatelessWidget {
                             ),
                           ],
                         ),
-                        if (produs.observatii.isNotEmpty)
+                        if (produs.observatii != null &&
+                            produs.observatii!.isNotEmpty)
                           Row(
                             children: [
                               const Icon(
@@ -98,7 +99,7 @@ class CardComanda extends StatelessWidget {
                                 color: Colors.grey,
                               ),
                               const SizedBox(width: 4),
-                              Text(produs.observatii),
+                              Text(produs.observatii!),
                             ],
                           ),
                         const Divider(color: Colors.black12),
@@ -108,7 +109,7 @@ class CardComanda extends StatelessWidget {
               ),
             ),
           ),
-          if (comanda.observatiiComanda.isNotEmpty)
+          if (comanda.observatiiComanda != null && comanda.observatiiComanda!.isNotEmpty)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

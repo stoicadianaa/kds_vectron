@@ -1,13 +1,12 @@
 class ProdusComanda {
   String id;
   String denumire;
-  String idCategorieProdus;
-  String denumireCategorie;
-  String observatii;
+  String? idCategorieProdus;
+  String? denumireCategorie;
+  String? observatii;
   num cantitate;
   num pretUnitar;
-  //todo fix null
-  int? idComanda;
+  int idComanda;
 
   ProdusComanda(this.id, this.denumire, this.idCategorieProdus, this.denumireCategorie, this.observatii,
       this.cantitate, this.pretUnitar, this.idComanda);
@@ -37,25 +36,15 @@ class ProdusComanda {
     if (json['denumire_produs'] == null) {
       throw Exception('denumire_produs is null');
     }
-    if (json['id_categorie_produs'] == null) {
-      throw Exception('id_categorie_produs is null');
-    }
-    if (json['denumire_categorie_produs'] == null) {
-      throw Exception('denumire_categorie_produs is null');
-    }
-    if (json['observatii_produs'] == null) {
-      throw Exception('observatii_produs is null');
-    }
     if (json['cantitate_produs'] == null) {
       throw Exception('cantitate_produs is null');
     }
     if (json['pret_produs'] == null) {
       throw Exception('pret_produs is null');
     }
-    // if (json['id_comanda'] == null) {
-    //   throw Exception('id_comanda is null');
-    // }
-
+    if (json['id_comanda'] == null) {
+      throw Exception('id_comanda is null');
+    }
 
     return ProdusComanda(
       json['id_produs'],

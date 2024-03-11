@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kds_vectron/app/widgets/card_comanda.dart';
 import 'package:kds_vectron/app/widgets/exact_time.dart';
+import 'package:kds_vectron/core/extensions/date_time_extension.dart';
 import 'package:kds_vectron/core/model/comanda.dart';
 import 'package:kds_vectron/core/service/comenzi.service.dart';
 import 'package:kds_vectron/core/service/web_socket.service.dart';
@@ -21,9 +22,14 @@ class ComenziScreen extends StatelessWidget {
         title: ExactTime(),
         centerTitle: true,
         actions: [
-          //todo format date
           Text(
-              '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}'),
+            DateTime.now().formattedDate,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           const SizedBox(width: 16),
         ],
       ),

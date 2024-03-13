@@ -37,8 +37,7 @@ class ComenziScreen extends StatelessWidget {
         stream: WebSocketService.comandaUpdateController.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            final List<Comanda> comenzi =
-                (snapshot.data ?? [] as List<Comanda>);
+            final List<Comanda> comenzi = snapshot.data?.values.toList() ?? [];
             comenzi.removeWhere((element) => element.oraEnd != null);
 
             return Scrollbar(

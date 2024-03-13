@@ -25,7 +25,7 @@ class WebSocketService {
       config: StompConfig(
         url: Uris.comandaWsUri.toString(),
         onConnect: (StompFrame frame) async {
-          await ComenziService().getComenzi().then((value) {
+          await ComenziService().getOnGoingComenzi().then((value) {
             final comenzi = <String, Comanda>{};
             for (var comanda in value) {
               comenzi[comanda.id] = comanda;
@@ -40,9 +40,16 @@ class WebSocketService {
               if (frame.body == null || frame.body!.isEmpty) {
                 return;
               }
+
               final Comanda comanda =
                   Comanda.fromJson(jsonDecode(frame.body!)['comanda']);
-              _comenzi.addAll({comanda.id: comanda});
+
+              if (comanda.oraEnd != null) {
+                _comenzi.remove(comanda.id);
+              } else {
+                _comenzi.addAll({comanda.id: comanda});
+              }
+
               comandaUpdateController.add(_comenzi);
             },
           );

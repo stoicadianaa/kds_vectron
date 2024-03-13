@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:kds_vectron/core/utils/uris.dart';
 
 class ComenziService {
-  Future<List<Comanda>> getComenzi() async {
-    final http.Response response = await http.get(Uris.comenziUri);
+  Future<List<Comanda>> getOnGoingComenzi() async {
+    final http.Response response = await http.get(Uris.comenziUri.replace(queryParameters: {'ended': 'false'}));
     final String source = const Utf8Decoder().convert(response.bodyBytes);
     final List<dynamic> json = jsonDecode(source)['comenzi'];
 

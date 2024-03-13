@@ -1,9 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:kds_vectron/app/comenzi/comenzi_screen.dart';
-
 import 'package:kds_vectron/core/service/web_socket.service.dart';
+import 'package:kds_vectron/app/screens/comenzi_screen.dart';
 
 void main() {
   runApp(const MyApp());

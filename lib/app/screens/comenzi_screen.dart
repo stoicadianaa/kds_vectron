@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:kds_vectron/app/widgets/card_comanda.dart';
 import 'package:kds_vectron/app/widgets/exact_time.dart';
@@ -55,7 +57,8 @@ class ComenziScreen extends StatelessWidget {
               ),
             );
           } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
+            log('Error: ${snapshot.error}');
+            return Center(child: Text('Error: ${snapshot.error}'));
           }
           return const Center(child: CircularProgressIndicator());
         },

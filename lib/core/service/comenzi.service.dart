@@ -3,30 +3,22 @@ import 'dart:convert';
 
 import 'package:kds_vectron/core/model/comanda.dart';
 import 'package:http/http.dart' as http;
+import 'package:kds_vectron/core/utils/uris.dart';
 
 class ComenziService {
   Future<List<Comanda>> getComenzi() async {
-    final http.Response response = await http.get(Uri.parse(
-        'https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/all'));
-
+    final http.Response response = await http.get(Uris.comenziUri);
     final String source = const Utf8Decoder().convert(response.bodyBytes);
+    final List<dynamic> json = jsonDecode(source)['comenzi'];
 
-    final json = jsonDecode(source)['comenzi'];
-
-    final List<Comanda> comenzi = [];
-    for (var comanda in json) {
-      comenzi.add(Comanda.fromJson(comanda));
-    }
-    return comenzi;
+    return json.map((comanda) => Comanda.fromJson(comanda)).toList();
   }
 
   static Future<void> startComanda(String id) async {
-    await http.put(Uri.parse(
-        'https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateStartTime/$id'));
+    await http.put(Uris.startComandaUri.replace(queryParameters: {'id': id}));
   }
 
   static Future<void> endComanda(String id) async {
-    await http.put(Uri.parse(
-        'https://vectron-kds-aad701792bc5.herokuapp.com/rest/comenzi/updateEndTime/$id'));
+    await http.put(Uris.endComandaUri.replace(queryParameters: {'id': id}));
   }
 }

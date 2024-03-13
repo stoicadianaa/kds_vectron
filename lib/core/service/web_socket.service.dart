@@ -7,6 +7,7 @@ import 'package:stomp_dart_client/stomp.dart';
 import 'package:stomp_dart_client/stomp_frame.dart';
 import 'package:stomp_dart_client/stomp_config.dart';
 import 'package:kds_vectron/core/model/comanda.dart';
+import 'package:kds_vectron/core/utils/uris.dart';
 
 class WebSocketService {
   static final comandaUpdateController =
@@ -22,7 +23,7 @@ class WebSocketService {
     late StompClient stompClient;
     stompClient = StompClient(
       config: StompConfig(
-        url: 'wss://vectron-kds-aad701792bc5.herokuapp.com/ws',
+        url: Uris.comandaWsUri.toString(),
         onConnect: (StompFrame frame) async {
           await ComenziService().getComenzi().then((value) {
             final comenzi = <String, Comanda>{};
